@@ -26,7 +26,6 @@ export class ContactsPanelComponent implements OnInit, OnChanges {
       // Loop through contacts and return string of all panels
       // Returns 'ngb-panel-0,ngb-panel-1,'
       this.openPanels = this.contacts.reduce((a, _b, i) => a + 'ngb-panel-' + i + ',', '');
-      console.log(this.openPanels)
     } else if (this.options.expandPanels === 'first'){
       this.openPanels = 'ngb-panel-0';
     }
