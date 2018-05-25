@@ -1,5 +1,14 @@
-## Contacts Panel
+# Mello Labs Contacts Panel
+
 Displays a list of contact information with email address and phone numbers
+
+### Installation
+
+Install @mello-labs/contacts-panel from npm:
+
+`npm install @mello-labs/contacts-panel --save` OR `yarn add @mello-labs/contacts-panel`
+
+### Setup
 
 ```bash
 # Import Module
@@ -28,7 +37,8 @@ public contactOptions: Contacts.Options = {
     },
 };
 
-# Example of how to supply outside scope to the email formatter. In this case adds loan number to subject which does not exist in the contact model
+# Example of how to supply outside scope to the email formatter. 
+# In this case adds loan number to subject which does not exist in the contact model
 public updateEmail(loanNumber: string) {
     // Create new instance of contactOptions with email formatter updated to include outside scope
     this.contactOptions = {
