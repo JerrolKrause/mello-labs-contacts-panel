@@ -1,0 +1,40 @@
+<div id="contacts-panel">
+  <ng-container *ngIf="!contacts?.length">
+    <p>No contacts found.</p>
+  </ng-container>
+  <ng-container *ngIf="contacts?.length">
+
+    <!-- Transclude content -->
+    <ng-content></ng-content>
+
+    <!-- Loop through contact groups -->
+    <ng-container *ngFor="let contactGroup of contacts; let i = index">
+      <ngb-accordion #acc="ngbAccordion" [activeIds]="openPanels">
+
+        <ngb-panel id="ngb-panel-{{i}}">
+          <ng-template ngbPanelTitle>
+            <!-- Accordion header -->
+            {{ contactGroup.label || 'Contacts' }}
+            <small *ngIf="options.showCount"><em>({{ contactGroup?.contacts?.length }})</em></small>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <!-- Accordion body -->
+            <p class="mb-0" *ngIf="!contactGroup?.contacts?.length">No {{ contactGroup.label || 'contacts' }} found</p>
+
+            <ul class="list-group mb-2" *ngIf="contactGroup?.contacts?.length">
+              <!-- Loop through contact groups -->
+              <li class="list-group-item flex-column align-items-start p-2"
+                  *ngFor="let contact of contactGroup?.contacts;let rowIndex = index">
+                <!-- Contacts entry -->
+                <lib-contacts-entry [contact]="contact" [options]="options"></lib-contacts-entry>
+              </li>
+            </ul>
+
+          </ng-template>
+        </ngb-panel>
+
+      </ngb-accordion>
+    </ng-container>
+
+  </ng-container>
+</div>
